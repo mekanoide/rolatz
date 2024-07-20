@@ -1,0 +1,7 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext"
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

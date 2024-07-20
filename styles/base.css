@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, calc(14px + 0.4vw), 18px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  min-height: 100dvh;
+
+  @apply bg-stone-950;
+}
+
+body {
+  @apply m-0 p-0 text-stone-300;
+}
+
+main {
+  @apply max-w-screen-md mx-auto;
+}
+
+h1 {
+  @apply text-2xl leading-tight font-semibold;
+}
+
+h2 {
+  @apply text-lg leading-tight font-semibold text-stone-100;
+}
+
+h3 {
+  @apply text-xs leading-tight font-semibold text-stone-400 uppercase;
+}
+
+input:is([type='text'], [type='email'], [type='password'], [type='number']),
+textarea {
+  @apply bg-transparent outline-none text-stone-200 border-b border-stone-700 rounded py-1 transition-all;
+  &:focus {
+    @apply border-stone-400;
+  }
+  &::placeholder {
+    @apply text-stone-700;
+  }
+  &:auto-fill {
+    @apply bg-transparent;
+  }
+}
+
+textarea {
+  @apply h-auto;
+}
+
+button {
+  &:hover {
+    @apply text-stone-100;
+  }
+  &:disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+}
