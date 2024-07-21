@@ -2,10 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=20",
-    "pnpm": ">=9"
-  },
+  "packageManager": "pnpm@latest",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
