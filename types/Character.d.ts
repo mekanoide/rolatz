@@ -1,9 +1,11 @@
-declare type Character = {
-  id: number
+type Character = {
+  id: string
   name: string
-  player: string
+  owner_id: string
+  player_id?: string
   game?: string
   system: string
   description?: string
   imageUrl?: string
+  notes?: string
 }

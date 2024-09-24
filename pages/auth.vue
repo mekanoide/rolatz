@@ -3,18 +3,13 @@ definePageMeta({
   layout: 'auth'
 })
 import useAuth from '@/composables/useAuth'
-import { navigateTo } from 'nuxt/app'
-import { ref, type Ref } from 'vue'
-const supabase = useSupabaseClient()
-const user = useSupabaseUser()
 
 const email = ref<string>('')
 const code = ref<string>('')
-const name = ref<string>('')
 const stage = ref<string>('email')
 const pending = ref<boolean>(false)
 
-const { login, verifyOtp, fetchUserProfile } = useAuth()
+const { login, verifyOtp } = useAuth()
 
 async function onSubmit() {
   pending.value = true
@@ -25,39 +20,13 @@ async function onSubmit() {
 
 async function onOTPEntered() {
   pending.value = true
-  const { user } = await verifyOtp(email.value, code.value)
-  if (!user) {
-    pending.value = false
-    return
-  }
-  console.log('Usuario verificado:', user.id)
-  const hasUserName = await checkUserName(user.id)
-  console.log('Tiene nombre de usuario:', hasUserName)
+  const response = await verifyOtp(email.value, code.value)
+  console.log('Response:', response)
+  if (response.error) throw response.error
   pending.value = false
-  if (hasUserName) {
-    navigateTo('/')
-  } else {
-    navigateTo('/name')
-  }
+  navigateTo('/name')
 }
 
-async function checkUserName(id: string): Promise<boolean> {
-  const userProfile = await fetchUserProfile(id)
-  if (userProfile && userProfile.name !== '') {
-    return true
-  }
-  return false
-}
-
-async function onNameEntered() {
-  pending.value = true
-  try {
-    supabase.from('users').upsert({ name: name.value }).eq('id', user.value?.id)
-  } catch (error) {
-    console.error(error)
-  }
-  navigateTo('/')
-}
 </script>
 
 <template>

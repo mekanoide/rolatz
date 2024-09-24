@@ -8,11 +8,14 @@ type Consequences = {
   severe: string
 }
 
-declare type ConcordiaCharacter = Character & {
+type ConcordiaSheet = {
   mainTraits: MainTrait[]
   flaws: string[]
   secondaryTraits: string[]
   consequences: Consequences
   gear: string[]
-  notes: string
+}
+
+type ConcordiaCharacter = Character & {
+  sheet: ConcordiaSheet
 }

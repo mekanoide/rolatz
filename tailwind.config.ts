@@ -2,8 +2,9 @@
 export default {
   content: [],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Atkinson Hyperlegible', 'sans-serif']
+    }
   },
-  plugins: [],
+  plugins: []
 }
-

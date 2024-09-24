@@ -1,10 +1,10 @@
 <template>
   <header
-    class="sticky top-0 w-full flex items-center justify-between z-20 py-2 px-4">
+    class="sticky top-0 w-full flex items-center justify-between z-20 p-2">
     <div>
       <slot></slot>
     </div>
-    <MenuSettings />
+    <MenuAccount />
   </header>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-4 p-4 border border-stone-900 rounded-lg shadow-lg">
+  <div class="grid p-2 bg-stone-900 rounded-lg">
     <slot></slot>
   </div>
 </template>

@@ -14,6 +14,8 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()
 
+const level = ref<number>(props.modelValue)
+
 /**
  * Updates the value based on the new value and the active state.
  *
@@ -38,16 +40,19 @@ function onToggle(e: Event): void {
   const target = e.target as HTMLButtonElement
   const isActive = target.dataset.active === 'true'
   const i = Number(target.dataset.index)
-  const updatedValue = updateValue(i, isActive)
-  emit('update:modelValue', updatedValue)
+  level.value = updateValue(i, isActive)
 }
+
+watch(level, (newValue) => {
+  emit('update:modelValue', newValue)
+})
 </script>
 
 <template>
-  <div class="flex gap-1 items-center">
+  <div class="flex gap-2 items-center">
     <button
       v-for="index in max"
-      class="w-6 md:w-8 md:rounded-md aspect-square rounded-sm border border-stone-600"
+      class="w-6 md:w-8 h-10 md:rounded-md rounded-sm border border-stone-700"
       type="button"
       role="switch"
       :data-index="index"

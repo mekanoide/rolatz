@@ -1,0 +1,8 @@
+export default {
+  MAX_MAIN_TRAITS: 3,
+  MAX_SECONDARY_TRAITS: 3,
+  MAX_FLAWS: 2,
+  MAX_STATES: 3,
+  MAX_GEAR: 6,
+  MAX_NOTES_LENGTH: 2048
+}

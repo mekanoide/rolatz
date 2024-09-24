@@ -1,8 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'auth'
+  layout: 'auth',
+  middleware: 'check-user-name'
 })
-import { onMounted, ref } from 'vue'
 
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
@@ -14,11 +14,13 @@ const pending = ref<boolean>(false)
 async function onNameEntered() {
   pending.value = true
   try {
+    if (!name.value) return
     const { data, error } = await supabase
-      .from('users')
+      .from('profiles')
       .update({ name: name.value })
-      .eq('id', user.value.id)
+      .eq('id', user.value?.id)
       .select()
+
     if (error) throw error
   } catch (error) {
     console.error(error)
@@ -43,6 +45,7 @@ onMounted(() => {
         ref="nameInput"
         type="text"
         v-model="name"
+        required
         placeholder="Introduce un nombre de usuario" />
       <Button
         type="submit"

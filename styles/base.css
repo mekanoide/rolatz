@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap');
+
+*,
+*::before,
+*::after {
+  font-family: 'Moderustic', sans-serif;
+}
 
 html {
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: 'Inter', sans-serif;
   font-size: clamp(14px, calc(14px + 0.4vw), 18px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   min-height: 100dvh;
-
   @apply bg-stone-950;
 }
 
@@ -17,30 +19,27 @@ body {
   @apply m-0 p-0 text-stone-300;
 }
 
+input,
+textarea,
+select,
+button,
+[popover] {
+  @apply text-stone-300;
+}
+
 main {
-  @apply max-w-screen-md mx-auto;
-}
-
-h1 {
-  @apply text-2xl leading-tight font-semibold;
-}
-
-h2 {
-  @apply text-lg leading-tight font-semibold text-stone-100;
-}
-
-h3 {
-  @apply text-xs leading-tight font-semibold text-stone-400 uppercase;
+  @apply mx-auto py-4;
+  width: min(calc(100% - 2rem), 1024px);
 }
 
 input:is([type='text'], [type='email'], [type='password'], [type='number']),
 textarea {
-  @apply bg-transparent outline-none text-stone-200 border-b border-stone-700 rounded py-1 transition-all;
+  @apply bg-stone-950 border border-stone-700 outline-none p-2 transition-all rounded-lg;
   &:focus {
-    @apply border-stone-400;
+    @apply border-stone-500;
   }
   &::placeholder {
-    @apply text-stone-700;
+    @apply text-stone-600;
   }
   &:auto-fill {
     @apply bg-transparent;
@@ -49,6 +48,20 @@ textarea {
 
 textarea {
   @apply h-auto;
+}
+
+select {
+  @apply text-stone-300 bg-transparent outline-none border border-stone-600 rounded py-2;
+  &:focus {
+    @apply border-stone-100;
+  }
+  &::placeholder {
+    @apply text-stone-700;
+  }
+}
+
+option {
+  @apply text-stone-300 bg-stone-900 shadow-lg p-4;
 }
 
 button {
